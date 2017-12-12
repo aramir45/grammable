@@ -1,6 +1,11 @@
 class GramsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
+  def destory
+    @gram = Gram.find_by_id(params[:id])
+    @gram.destory
+    redirect_to root_path
+  end
 
   def update
     @gram = Gram.find_by_id(params[:id])
